@@ -1,8 +1,6 @@
 import {Component} from "@angular/core";
-export class Hero {
-    id: number;
-    name: string;
-}
+import {Hero} from "./models/hero";
+
 @Component({
     selector: 'ng2',
     styles: [`
@@ -64,17 +62,7 @@ export class Hero {
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
          </ul>
-            
-        <div *ngIf="selectedHero">
-            <h2>{{selectedHero.name}} 详情!</h2>
-            <div>
-                <label>编号: </label>{{selectedHero.id}}
-            </div>
-            <div>
-                <label>姓名: </label>
-                <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-            </div>
-        </div>
+         <hd [hero]="selectedHero"></hd>
     `
 })
 
