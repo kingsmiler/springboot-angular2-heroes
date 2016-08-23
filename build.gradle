@@ -65,6 +65,11 @@ sourceSets {
 	}
 }
 
+// encoding
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
 // configure gradle-node-plugin
 node {
 	version = '6.3.0'
