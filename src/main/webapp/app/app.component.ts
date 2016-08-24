@@ -1,5 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Hero} from "./models/hero";
+import {HeroService} from "./services/hero.service";
 
 @Component({
     selector: 'ng2',
@@ -63,28 +64,28 @@ import {Hero} from "./models/hero";
             </li>
          </ul>
          <hd [hero]="selectedHero"></hd>
-    `
+    `,
+    providers: [HeroService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = '无双三国';
-    heroes = HEROES;
+
+    heroes: Hero[];
     selectedHero: Hero;
+
+    constructor(private heroService: HeroService) {
+    }
+
+    ngOnInit(){
+        this.getHeroes();
+    }
+
+    getHeroes() {
+        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    }
 
     onSelect(hero: Hero) {
         this.selectedHero = hero;
     }
 }
-
-const HEROES: Hero[] = [
-    {id: 11, name: '关羽'},
-    {id: 12, name: '张飞'},
-    {id: 13, name: '赵云'},
-    {id: 14, name: '黄忠'},
-    {id: 15, name: '马超'},
-    {id: 16, name: '张辽'},
-    {id: 17, name: '张郃'},
-    {id: 18, name: '庞德'},
-    {id: 19, name: '周瑜'},
-    {id: 20, name: '孙策'}
-];
