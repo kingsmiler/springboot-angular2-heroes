@@ -1,21 +1,34 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-import {AppComponent} from "./app.component";
+import {LocationStrategy, HashLocationStrategy} from "@angular/common";
+
+import {AppComponent} from "./components/app/app.component";
+import {HeroesComponent} from "./components/heroes/heroes.component";
 import {HeroDetailComponent} from "./components/hero-detail/hero-detail.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+
+import {HeroService} from "./services/hero.service";
+
+import {Routing} from "./app.routing";
 
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        Routing
     ],
     declarations: [
         AppComponent,
+        DashboardComponent,
+        HeroesComponent,
         HeroDetailComponent
     ],
-    bootstrap: [
-        AppComponent
-    ]
+    providers: [
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
+        HeroService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
