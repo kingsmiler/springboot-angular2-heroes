@@ -1,8 +1,9 @@
 import {Component} from "@angular/core";
 
 @Component({
+    moduleId: __moduleName,
     selector: 'ng2',
-    styleUrls: ['app/app.component.css'],
+    styleUrls: ['app.component.css'],
     template: `
         <h1>{{title}}</h1>
             <nav>
