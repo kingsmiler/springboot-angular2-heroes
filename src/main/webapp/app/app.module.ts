@@ -7,22 +7,27 @@ import {AppComponent} from "./components/app/app.component";
 import {HeroesComponent} from "./components/heroes/heroes.component";
 import {HeroDetailComponent} from "./components/hero-detail/hero-detail.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {HeroSearchComponent} from "./components/hero-search/hero-search.component";
 
 import {HeroService} from "./services/hero.service";
 
 import {Routing} from "./app.routing";
+import {HttpModule} from "@angular/http";
+
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
+        HttpModule,
         Routing
     ],
     declarations: [
         AppComponent,
         DashboardComponent,
         HeroesComponent,
-        HeroDetailComponent
+        HeroDetailComponent,
+        HeroSearchComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
